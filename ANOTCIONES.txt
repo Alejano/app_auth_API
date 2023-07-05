@@ -1,0 +1,95 @@
+1.-https://redesclaudia.mx/2024/directorio/registro
+ contiene: 
+    https://redesclaudia.mx/service/api/persona
+             switch(fw.usuarioperfil)
+                    {
+                        case 1:
+                            personas = dbContext.vwPersonasV2.Where(x => x.enable >= 0).OrderBy(x => x.primerap).Take(300).ToList<db.vwPersonasV2>();
+                            break;
+      
+                        default:
+                            personas = dbContext.vwPersonasV2.Where(x => x.enable >= 0 && x.userid == fw.usuarioid).OrderBy(x => x.primerap).ToList<db.vwPersonasV2>();
+                            break;
+                    }
+                    response:
+                        [{"personaid":42639,"curp":"SEXF460627HMNGXL01","nombre":"JOSE FEIX ","primerap":" ","segundoap":"SEGURA","genero":23,"lugarnacimiento":40,"personaNombreCompleto":"JOSE FEIX    SEGURA","claveelector":"","cargo":0,"createat":"2022-07-10T22:49:56.583Z","userid":33902,"editat":"2022-07-10T22:49:56.583Z","enable":1,"imagen":"","fechanacimiento":"27-06-1946","estado":null,"municipio":"0","distritofederal":"0","seccion":"0","responsabilidad":null,"otro":"","distritolocal":"0","personaNacimiento":"MICHOACAN","personaGenero":"HOMBRE","personaCargo":null,"personaEstado":null,"personaMunicipio":null,"personaDistritoFederal":"","personaSeccion":null,"personaResponsabilidad":null,"celular":"5615318307","correo":"JosÃ©.s@gmail.com","redes":"https://www.facebook.com/","estadoD":39,"municipioD":1108,"alcaldia":0,"distritofederalD":438,"seccionD":39863,"calle":"","next":"","nint":"","manzana":"","lote":"","colonia":"","cp":"","categoria":0,"twitter":"https://twitter.com/","instagram":"https://www.instagram.com/","linkedin":"https://mx.linkedin.com/","datosEstado":"ESTADO DE MÃXICO","datosMunicipio":"NEZAHUALCOYOTL","datosDistritoFederal":"29","datosSeccion":"3338","lat":0,"lon":0,"verificado":73,"verificadoTXT":"BUZÃN","verificadofecha":"2022-07-11T13:09:46.777Z","verificadopor":55468,"verificadocorreo":null,"verificadoporTXT":"KARINA H","username":"5615318307","uuserid":65104,"userCreateAt":"2022-07-10T22:49:59.943Z","enviosms":0,"respondiosms":0,"creadoPor":"5569147030","creadoPorNombre":"SVEHIDY YARETZY BUSTOS  SOLIS","perfil":20,"perfilTXT":"CAPTURA","difusionEmail":"mexico@redesclaudia.mx","difusionPhone":"62bdf5de2bec0111abc70978","cappkey":"https://redesclaudia.mx/documentos/qr/ESTADOMEXICO.png","cpwd":"\r\nhttps://wa.link/3t9rj5","creadoPorNew":33902,"nombreCompletoNew":"SVEHIDY YARETZY BUSTOS  SOLIS","creadoPorBack":null,"nombreCompletoBack":null,"userIdNuevo":33902,"useridAnt":26238,"verificado2":null,"verificadoTXT2":null,"verificadofecha2":null,"verificadopor2":null,"verificadoporTXT2":null}]
+
+    https://redesclaudia.mx/service/api/responsabilidad
+        cat = dbContext.vwResponsabilidadCargo.ToList<db.vwResponsabilidadCargo>();
+                return Json(cat);
+
+    https://redesclaudia.mx/service/api/catalogos?catalogo=responsabilidad
+    https://redesclaudia.mx/service/api/catalogos?catalogo=genero	
+    https://redesclaudia.mx/service/api/catalogos?catalogo=actividad	
+    https://redesclaudia.mx/service/api/catalogos?catalogo=entidades	
+    https://redesclaudia.mx/service/api/catalogos?catalogo=categoria	
+   
+
+   AL VER REGISRO:
+     https://redesclaudia.mx/service/api/persona?id=23219
+     persona = dbContext.vwPersonasV2.Where(x => x.personaid == id).OrderBy(x => x.primerap).FirstOrDefault();
+                if (persona != null)
+                {
+                    if (!string.IsNullOrEmpty(persona.imagen))
+                        img.consultar(persona.imagen).Wait();
+                    persona.imagen = img.base64File;
+                }
+                return Content(HttpStatusCode.OK, clases.toJsonObject(persona));
+            RESPONDE :
+            {"personaid":23219,"curp":"OOXP400828HDFRXD03","nombre":"PEDRO ANGEL","primerap":" ","segundoap":"ORDOÑEZ","genero":23,"lugarnacimiento":33,"personaNombreCompleto":"PEDRO ANGEL   ORDOÑEZ","claveelector":"","cargo":58,"createat":"2022-06-30T01:06:02.55Z","userid":32742,"editat":"2022-07-05T02:24:06.47Z","enable":1,"imagen":null,"fechanacimiento":"20-08-1940","estado":"39","municipio":"1108","distritofederal":"0","seccion":"0","responsabilidad":"2","otro":"A FIN","distritolocal":"0","personaNacimiento":"CIUDAD DE MÉXICO","personaGenero":"HOMBRE","personaCargo":"OTRO","personaEstado":"ESTADO DE MÉXICO","personaMunicipio":"NEZAHUALCOYOTL","personaDistritoFederal":"","personaSeccion":null,"personaResponsabilidad":"MUNICIPIO","celular":"5616164043","correo":"guardianandrader@gmail.com","redes":"https://www.facebook.com/","estadoD":39,"municipioD":1108,"alcaldia":0,"distritofederalD":438,"seccionD":39994,"calle":"","next":"","nint":"","manzana":"","lote":"","colonia":"","cp":"","categoria":20,"twitter":"https://twitter.com/","instagram":"https://www.instagram.com/","linkedin":"https://mx.linkedin.com/","datosEstado":"ESTADO DE MÉXICO","datosMunicipio":"NEZAHUALCOYOTL","datosDistritoFederal":"29","datosSeccion":"3580","lat":0,"lon":0,"verificado":69,"verificadoTXT":"ABANDONO","verificadofecha":"2022-07-06T13:59:00.733Z","verificadopor":55468,"verificadocorreo":null,"verificadoporTXT":"KARINA H","username":"5616164043","uuserid":46732,"userCreateAt":"2022-07-01T16:34:22.113Z","enviosms":0,"respondiosms":0,"creadoPor":"5545794855","creadoPorNombre":"ENRIQUE ALONSA RODRIGUEZ","perfil":20,"perfilTXT":"CAPTURA","difusionEmail":"mexico@redesclaudia.mx","difusionPhone":"62bdf5de2bec0111abc70978","cappkey":"https://redesclaudia.mx/documentos/qr/ESTADOMEXICO.png","cpwd":"\r\nhttps://wa.link/3t9rj5","creadoPorNew":32742,"nombreCompletoNew":"ENRIQUE ALONSA RODRIGUEZ","creadoPorBack":null,"nombreCompletoBack":null,"userIdNuevo":32742,"useridAnt":1194,"verificado2":null,"verificadoTXT2":null,"verificadofecha2":null,"verificadopor2":null,"verificadoporTXT2":null}
+
+   AL EDITAR:
+    api/responsabilidad?filtro=MUNICIPIO	
+          cat = dbContext.vwResponsabilidadCargo.Where(x=> x.nivel == filtro).ToList<db.vwResponsabilidadCargo>();
+            return Json(cat);
+
+    api/municipios?estado=ESTADO%20DE%20M%C3%89XICO	
+    api/municipios?estado=ESTADO%20DE%20M%C3%89XICO	
+             EstadosMunicipio = dbContext.cat_municipios.Where(x => x.estado == estado).ToList<db.cat_municipios>();
+                return Json(EstadosMunicipio);
+
+    api/cp?estado=ESTADO%20DE%20M%C3%89XICO&municipio=NEZAHUALCOYOTL	
+    api/cp?estado=ESTADO%20DE%20M%C3%89XICO&municipio=NEZAHUALCOYOTL&distritofederal=29	
+                cp = dbContext.vwCP.Where(x=> x.ENTIDAD_INE == estado).ToList<db.vwCP>();
+                return Json(cp);
+
+    DESCARGAR TESTIGOS:
+    https://redesclaudia.mx/service/api/testigos
+       DESCARGA EXCEL
+
+2.- https://redesclaudia.mx/2024/testigo/registro
+    LLAMA:
+        https://redesclaudia.mx/service/api/testigos
+         List<db.vwTestigo> t = new List<db.vwTestigo>();
+            db.vwDatosPersona dPersona = new db.vwDatosPersona();
+            clases.lfirewall fw = new clases.lfirewall();
+        if (fw.usuarioperfil == 1)
+                    t = dbContext.vwTestigos.Where(x => x.testigoid > 0).ToList<db.vwTestigo>();
+                else
+                {
+                    dPersona = dbContext.vwDatosPersonas.Where(y => y.userid == fw.usuarioid).FirstOrDefault(); 
+                    t = dbContext.vwTestigos.Where(x => x.testigoid > 0 && (x.userid == fw.usuarioid || x.idreferencia==dPersona.personaid)).ToList<db.vwTestigo>();
+                    
+
+                }
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                string jsonString = JsonSerializer.Serialize(t, options);
+
+
+                return Content(HttpStatusCode.OK, clases.toJsonArray(t));
+
+    VER:
+    https://redesclaudia.mx/service/api/imagen?imagen=7f83d2d9-313b-4f61-93f5-5ec0c705f95a.jpg
+
+}3.- redes :
+vertical_align_bottom
+4,.- https://redesclaudia.mx/2024/verificacion/registro
+     buscar:
+        /api/persona?nombre=MARIA%20GUADALUPE%20MARTINEZ%20ACOSTA
+        responde:
+            [{"personaid":2233,"curp":"MAAG481211MDFRCD07","nombre":"MARIA GUADALUPE","primerap":"MARTINEZ","segundoap":"ACOSTA","genero":24,"lugarnacimiento":33,"personaNombreCompleto":"MARIA GUADALUPE MARTINEZ ACOSTA","claveelector":"","cargo":58,"createat":"2022-06-22T21:39:32.103Z","userid":36790,"editat":"2022-06-22T21:39:32.103Z","enable":1,"imagen":"e75cb00a-834a-43fd-ba3b-121377919110.jpg","fechanacimiento":"11-12-1948","estado":"33","municipio":"492","distritofederal":"0","seccion":"0","responsabilidad":"2","otro":"DIRIGENTE ","distritolocal":"0","personaNacimiento":"CIUDAD DE MÉXICO","personaGenero":"MUJER","personaCargo":"OTRO","personaEstado":"CIUDAD DE MÉXICO","personaMunicipio":"CUAUHTEMOC","personaDistritoFederal":"","personaSeccion":null,"personaResponsabilidad":"MUNICIPIO","celular":"5577597191","correo":"acosta48@hotmail.com","redes":"https://www.facebook.com/","estadoD":39,"municipioD":1108,"alcaldia":0,"distritofederalD":437,"seccionD":39597,"calle":"","next":"","nint":"","manzana":"","lote":"","colonia":"","cp":"","categoria":20,"twitter":"https://twitter.com/","instagram":"https://www.instagram.com/","linkedin":"https://mx.linkedin.com/","datosEstado":"ESTADO DE MÉXICO","datosMunicipio":"NEZAHUALCOYOTL","datosDistritoFederal":"20","datosSeccion":"3141","lat":0,"lon":0,"verificado":75,"verificadoTXT":"VALIDADO - RECHAZO","verificadofecha":"2022-07-09T18:12:36.047Z","verificadopor":55571,"verificadocorreo":null,"verificadoporTXT":"MARIBEL H","username":"5577597191","uuserid":43072,"userCreateAt":"2022-07-01T15:58:40.137Z","enviosms":0,"respondiosms":0,"creadoPor":"5626594226","creadoPorNombre":"ADRIANA ESCALANTE SANDOVAL","perfil":20,"perfilTXT":"CAPTURA","difusionEmail":"mexico@redesclaudia.mx","difusionPhone":"62bdf5de2bec0111abc70978","cappkey":"https://redesclaudia.mx/documentos/qr/ESTADOMEXICO.png","cpwd":"\r\nhttps://wa.link/3t9rj5","creadoPorNew":36790,"nombreCompletoNew":"ADRIANA ESCALANTE SANDOVAL","creadoPorBack":null,"nombreCompletoBack":null,"userIdNuevo":36790,"useridAnt":1164,"verificado2":null,"verificadoTXT2":null,"verificadofecha2":null,"verificadopor2":null,"verificadoporTXT2":null}]
+
+5.- ADMINISTRACION USUADIOAS:
+}   https://redesclaudia.mx/2024/administracion/usuarios
+     CARGA y llena tabla:
+        https://redesclaudia.mx/service/api/persona
